@@ -78,6 +78,7 @@ export const Toolbar = () => {
       {
         label: "Bold",
         icon: BoldIcon,
+        isActive: editor?.isActive("bold"),
         onClick: () => editor?.chain().focus().toggleBold().run(),
       },
     ],
