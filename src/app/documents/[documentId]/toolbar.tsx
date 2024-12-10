@@ -3,6 +3,7 @@
 import {
   BoldIcon,
   ItalicIcon,
+  ListTodoIcon,
   LucideIcon,
   MessageSquarePlusIcon,
   PrinterIcon,
@@ -104,6 +105,12 @@ export const Toolbar = () => {
         icon: MessageSquarePlusIcon,
         onClick: () => console.log("TODO: Comment"),
         isActive: false, //TODO: ENABLE THIS FUNCTIONALITY
+      },
+      {
+        label: "List Todo",
+        icon: ListTodoIcon,
+        onClick: () => editor?.chain().focus().toggleTaskList().run(),
+        isActive: editor?.isActive("toggleTasklist"), //TODO: ENABLE THIS FUNCTIONALITY
       },
     ],
   ];
