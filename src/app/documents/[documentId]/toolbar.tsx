@@ -8,6 +8,7 @@ import {
   MessageSquarePlusIcon,
   PrinterIcon,
   Redo2Icon,
+  RemoveFormattingIcon,
   SpellCheckIcon,
   UnderlineIcon,
   Undo2Icon,
@@ -110,7 +111,12 @@ export const Toolbar = () => {
         label: "List Todo",
         icon: ListTodoIcon,
         onClick: () => editor?.chain().focus().toggleTaskList().run(),
-        isActive: editor?.isActive("toggleTasklist"), //TODO: ENABLE THIS FUNCTIONALITY
+        isActive: editor?.isActive("toggleTasklist"),
+      },
+      {
+        label: "Remove formatting",
+        icon: RemoveFormattingIcon,
+        onClick: () => editor?.chain().focus().unsetAllMarks().run(),
       },
     ],
   ];
