@@ -5,7 +5,6 @@ interface DocumentIdPageProps {
 }
 
 const DocumentIdPage = async ({ params }: DocumentIdPageProps) => {
-  const { documentId } = await params;
   return (
     <div className="min-h-screen bg-[#fafbfd]">
       <Editor />
