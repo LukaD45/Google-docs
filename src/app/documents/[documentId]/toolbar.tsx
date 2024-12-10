@@ -1,8 +1,5 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
-import { useEditorStore } from "@/store/use-editor-store";
 import {
   BoldIcon,
   ItalicIcon,
@@ -10,9 +7,13 @@ import {
   PrinterIcon,
   Redo2Icon,
   SpellCheckIcon,
+  UnderlineIcon,
   Undo2Icon,
 } from "lucide-react";
 
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
+import { useEditorStore } from "@/store/use-editor-store";
 interface ToolbarButtonProps {
   onClick?: () => void;
   isActive?: boolean;
@@ -82,11 +83,18 @@ export const Toolbar = () => {
         isActive: editor?.isActive("bold"),
         onClick: () => editor?.chain().focus().toggleBold().run(),
       },
+
       {
         label: "Italic",
         icon: ItalicIcon,
         isActive: editor?.isActive("italic"),
         onClick: () => editor?.chain().focus().toggleItalic().run(),
+      },
+      {
+        label: "Underline",
+        icon: UnderlineIcon,
+        isActive: editor?.isActive("underline"),
+        onClick: () => editor?.chain().focus().toggleUnderline().run(),
       },
     ],
   ];
