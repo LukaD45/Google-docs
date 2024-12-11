@@ -4,6 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
 import FontFamily from "@tiptap/extension-font-family";
+import { LineHeightExtension } from "@/extensions/line-height";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { Color } from "@tiptap/extension-color";
 import Link from "@tiptap/extension-link";
@@ -57,6 +58,10 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      LineHeightExtension.configure({
+        types: ["heading", "paragraph"],
+        defaultLineHeight: "normal",
+      }),
       FontSizeExtension,
       TextAlign.configure({
         types: ["heading", "paragraph"],
