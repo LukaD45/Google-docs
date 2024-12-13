@@ -110,7 +110,9 @@ export const Navbar = () => {
                     <Undo2Icon className="size-4 mr-2" />
                     Undo<MenubarShortcut>Ctrl + Z</MenubarShortcut>
                   </MenubarItem>
-                  <MenubarItem>
+                  <MenubarItem
+                    onClick={() => editor?.chain().focus().redo().run()}
+                  >
                     <Redo2Icon className="size-4 mr-2" />
                     Redo<MenubarShortcut>Ctrl + Y</MenubarShortcut>
                   </MenubarItem>
