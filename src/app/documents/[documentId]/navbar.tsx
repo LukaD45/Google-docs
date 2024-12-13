@@ -182,7 +182,11 @@ export const Navbar = () => {
                         <ItalicIcon className="size-4 mr-2" />
                         Italic <MenubarShortcut>Ctrl + I</MenubarShortcut>
                       </MenubarItem>
-                      <MenubarItem>
+                      <MenubarItem
+                        onClick={() =>
+                          editor?.chain().focus().toggleUnderline().run()
+                        }
+                      >
                         <UnderlineIcon className="size-4 mr-2" />
                         Underline<MenubarShortcut>Ctrl + U</MenubarShortcut>
                       </MenubarItem>
