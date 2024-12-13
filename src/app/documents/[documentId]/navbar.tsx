@@ -108,19 +108,19 @@ export const Navbar = () => {
                       Save
                     </MenubarSubTrigger>
                     <MenubarSubContent>
-                      <MenubarItem>
+                      <MenubarItem onClick={onSaveJSON}>
                         <FileJsonIcon className="size-4 mr-2" />
                         JSON
                       </MenubarItem>
-                      <MenubarItem>
+                      <MenubarItem onClick={onSaveHTML}>
                         <GlobeIcon className="size-4 mr-2" />
                         HTML
                       </MenubarItem>
-                      <MenubarItem>
+                      <MenubarItem onClick={() => window.print()}>
                         <BsFilePdf className="size-4 mr-2" />
                         PDF
                       </MenubarItem>
-                      <MenubarItem>
+                      <MenubarItem onClick={onSaveText}>
                         <FileText className="size-4 mr-2" />
                         Text
                       </MenubarItem>
