@@ -13,6 +13,7 @@ import {
   ItalicIcon,
   PrinterIcon,
   Redo2Icon,
+  RemoveFormattingIcon,
   StrikethroughIcon,
   TextIcon,
   TrashIcon,
@@ -152,10 +153,15 @@ export const Navbar = () => {
                       </MenubarItem>
                       <MenubarItem>
                         <StrikethroughIcon className="size-4 mr-2" />
-                        Strikthrough <MenubarShortcut>Ctrl + S</MenubarShortcut>
+                        Strikthrough &nbsp;&nbsp;
+                        <MenubarShortcut>Ctrl + S</MenubarShortcut>
                       </MenubarItem>
                     </MenubarSubContent>
                   </MenubarSub>
+                  <MenubarItem>
+                    <RemoveFormattingIcon className="size-4 mr-2" />
+                    Clear formatting
+                  </MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
             </Menubar>
