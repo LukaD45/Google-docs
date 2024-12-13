@@ -42,7 +42,11 @@ export const Navbar = () => {
   const { editor } = useEditorStore();
 
   const insertTable = ({ rows, cols }: { rows: number; cols: number }) => {
-    editor?.chain().focus().insertTable({ rows, cols, withHeaderRow: false });
+    editor
+      ?.chain()
+      .focus()
+      .insertTable({ rows, cols, withHeaderRow: false })
+      .run();
   };
 
   return (
