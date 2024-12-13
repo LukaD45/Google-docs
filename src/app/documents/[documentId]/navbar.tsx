@@ -194,7 +194,11 @@ export const Navbar = () => {
                         <UnderlineIcon className="size-4 mr-2" />
                         Underline<MenubarShortcut>Ctrl + U</MenubarShortcut>
                       </MenubarItem>
-                      <MenubarItem>
+                      <MenubarItem
+                        onClick={() =>
+                          editor?.chain().focus().toggleStrike().run()
+                        }
+                      >
                         <StrikethroughIcon className="size-4 mr-2" />
                         Strikthrough &nbsp;&nbsp;
                         <MenubarShortcut>Ctrl + S</MenubarShortcut>
