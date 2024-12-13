@@ -10,10 +10,13 @@ import {
   FilePlusIcon,
   FileText,
   GlobeIcon,
+  ItalicIcon,
   PrinterIcon,
   Redo2Icon,
+  StrikethroughIcon,
   TextIcon,
   TrashIcon,
+  UnderlineIcon,
   Undo2Icon,
 } from "lucide-react";
 
@@ -137,7 +140,19 @@ export const Navbar = () => {
                     <MenubarSubContent>
                       <MenubarItem>
                         <BoldIcon className="size-4 mr-2" />
-                        Bold
+                        Bold <MenubarShortcut>Ctrl + B</MenubarShortcut>
+                      </MenubarItem>
+                      <MenubarItem>
+                        <ItalicIcon className="size-4 mr-2" />
+                        Italic <MenubarShortcut>Ctrl + I</MenubarShortcut>
+                      </MenubarItem>
+                      <MenubarItem>
+                        <UnderlineIcon className="size-4 mr-2" />
+                        Underline<MenubarShortcut>Ctrl + U</MenubarShortcut>
+                      </MenubarItem>
+                      <MenubarItem>
+                        <StrikethroughIcon className="size-4 mr-2" />
+                        Strikthrough <MenubarShortcut>Ctrl + S</MenubarShortcut>
                       </MenubarItem>
                     </MenubarSubContent>
                   </MenubarSub>
