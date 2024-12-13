@@ -178,7 +178,11 @@ export const Navbar = () => {
                         <BoldIcon className="size-4 mr-2" />
                         Bold <MenubarShortcut>Ctrl + B</MenubarShortcut>
                       </MenubarItem>
-                      <MenubarItem>
+                      <MenubarItem
+                        onClick={() =>
+                          editor?.chain().focus().toggleItalic().run()
+                        }
+                      >
                         <ItalicIcon className="size-4 mr-2" />
                         Italic <MenubarShortcut>Ctrl + I</MenubarShortcut>
                       </MenubarItem>
