@@ -40,6 +40,11 @@ import { useEditorStore } from "@/store/use-editor-store";
 
 export const Navbar = () => {
   const { editor } = useEditorStore();
+
+  const insertTable = ({ rows, cols }: { rows: number; cols: number }) => {
+    editor?.chain().focus().insertTable({ rows, cols, withHeaderRow: false });
+  };
+
   return (
     <nav className="flex items-center justify-between">
       <div className="flex gap-2 items-center">
