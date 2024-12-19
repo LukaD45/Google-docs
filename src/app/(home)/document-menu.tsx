@@ -32,7 +32,7 @@ export const DocumentMenu = ({
       <DropdownMenuContent>
         <RemoveDialog documentId={documentId}>
           <DropdownMenuItem
-            onSelect={(e) => e.stopPropagation()}
+            onSelect={(e) => e.preventDefault()}
             onClick={(e) => e.stopPropagation()}
           >
             <TrashIcon className="size-4 mr-2" />
