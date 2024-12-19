@@ -1,5 +1,5 @@
 export const templates = [
-  { id: "blank", label: "blank document", imageUrl: "/blank-document.svg" },
+  { id: "blank", label: "Blank document", imageUrl: "/blank-document.svg" },
   {
     id: "software-proposal",
     label: "Software develoment",

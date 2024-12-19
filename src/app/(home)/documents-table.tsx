@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 
 import { Doc } from "../../../convex/_generated/dataModel";
+import { DocumentRow } from "./document-row";
 
 interface DocumentsTableProps {
   documents: Doc<"documents">[] | undefined;
