@@ -12,6 +12,9 @@ interface DocumentRowProps {
 }
 
 export const DocumentRow = ({ document }: DocumentRowProps) => {
+  const onNewTabClick = (id: string) => {
+    window.open(`/documents/${id}`, "_blank");
+  };
   return (
     <TableRow className="cursor-pointer">
       <TableCell className="w-[50px]">
@@ -30,7 +33,11 @@ export const DocumentRow = ({ document }: DocumentRowProps) => {
         {format(new Date(document._creationTime), "MMM dd, yyyy")}
       </TableCell>
       <TableCell className="flex  justify-end">
-        <DocumentMenu />
+        <DocumentMenu
+          documentId={document._id}
+          title={document.title}
+          onNewTab={onNewTabClick}
+        />
       </TableCell>
     </TableRow>
   );
