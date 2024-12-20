@@ -21,9 +21,12 @@ import { useEditorStore } from "@/store/use-editor-store";
 import Underline from "@tiptap/extension-underline";
 import TextStyle from "@tiptap/extension-text-style";
 import { Ruler } from "./ruler";
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 
 export const Editor = () => {
+  const liveblocks = useLiveblocksExtension();
   const { setEditor } = useEditorStore();
+
   const editor = useEditor({
     immediatelyRender: false,
     onCreate({ editor }) {
@@ -59,6 +62,7 @@ export const Editor = () => {
       },
     },
     extensions: [
+      liveblocks,
       StarterKit,
       LineHeightExtension.configure({
         types: ["heading", "paragraph"],
