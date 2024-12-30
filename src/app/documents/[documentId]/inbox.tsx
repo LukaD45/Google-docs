@@ -13,7 +13,7 @@ import {
 
 export const Inbox = () => {
   return (
-    <ClientSideSuspense fallback={null}>
+    <ClientSideSuspense fallback={<p>Loading...</p>}>
       <InboxMenu />
     </ClientSideSuspense>
   );
