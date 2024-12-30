@@ -16,4 +16,5 @@ export async function getUsers() {
       user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous",
     avatar: user.imageUrl,
   }));
+  return users;
 }
