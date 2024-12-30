@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import {
   LiveblocksProvider,
   RoomProvider,
@@ -30,12 +30,29 @@ export function Room({ children }: { children: ReactNode }) {
     []
   );
 
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
+
   return (
     <LiveblocksProvider
       throttle={16}
       authEndpoint="/api/liveblocks-auth"
-      resolveUsers={() => []}
-      resolveMentionSuggestions={() => []}
+      resolveUsers={({ userIds }) => {
+        return userIds.map(
+          (userId) => users.find((user) => user.id === userId) ?? undefined
+        );
+      }}
+      resolveMentionSuggestions={({ text }) => {
+        let filteredUsers = users;
+
+        if (text) {
+          filteredUsers = users.filter((user) =>
+            user.name.toLowerCase().includes(text.toLowerCase())
+          );
+        }
+        return filteredUsers.map((user) => user.id);
+      }}
       resolveRoomsInfo={() => []}
     >
       <RoomProvider id={params.documentId as string}>
