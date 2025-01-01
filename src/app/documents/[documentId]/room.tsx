@@ -45,6 +45,7 @@ export function Room({ children }: { children: ReactNode }) {
           method: "POST",
           body: JSON.stringify({ room }),
         });
+
         return await response.json();
       }}
       resolveUsers={({ userIds }) => {

@@ -13,7 +13,7 @@ import {
 
 export const Inbox = () => {
   return (
-    <ClientSideSuspense fallback={<p>Loading...</p>}>
+    <ClientSideSuspense fallback={null}>
       <InboxMenu />
     </ClientSideSuspense>
   );
@@ -35,7 +35,14 @@ const InboxMenu = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-auto">
         {inboxNotifications.length > 0 ? (
-          <InboxNotificationList></InboxNotificationList>
+          <InboxNotificationList>
+            {inboxNotifications.map((inboxNotification) => (
+              <InboxNotification
+                key={inboxNotification.id}
+                inboxNotification={inboxNotification}
+              />
+            ))}
+          </InboxNotificationList>
         ) : (
           <div className="p-2 w-[400px] text-center text-sm text-muted-foreground">
             No notifications
