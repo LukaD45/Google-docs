@@ -1,11 +1,20 @@
 import { useRef, useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
+import { useStorage, useMutation } from "@liveblocks/react";
+import { useStore } from "zustand";
 
 const markers = Array.from({ length: 83 }, (_, i) => i);
 
 export const Ruler = () => {
-  const [leftMargin, setLeftMargin] = useState(56);
-  const [rightMargin, setRightMargin] = useState(56);
+  const leftMargin = useStorage((root) => root.leftMargin) ?? 56;
+  const setLeftMargin = useMutation(({ storage }, position: number) => {
+    storage.set("leftMargin", position);
+  }, []);
+
+  const rightMargin = useStorage((root) => root.rightMargin) ?? 56;
+  const setRightMargin = useMutation(({ storage }, position: number) => {
+    storage.set("rightMargin", position);
+  }, []);
 
   const [isDraggingLeft, setIsDraggingLeft] = useState(false);
   const [isDraggingRight, setIsDraggingRight] = useState(false);
@@ -20,20 +29,22 @@ export const Ruler = () => {
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    const PAGE_WIDTH = 816;
+    const MINIMUM_SPACE = 100;
     if ((isDraggingLeft || isDraggingRight) && rulerRef.current) {
       const container = rulerRef.current.querySelector("#ruler-container");
       if (container) {
         const containerRect = container.getBoundingClientRect();
         const relativeX = e.clientX - containerRect.left;
-        const rawPosition = Math.max(0, Math.min(816, relativeX));
+        const rawPosition = Math.max(0, Math.min(PAGE_WIDTH, relativeX));
 
         if (isDraggingLeft) {
-          const maxLeftPosition = 816 - rightMargin - 100;
+          const maxLeftPosition = PAGE_WIDTH - rightMargin - MINIMUM_SPACE;
           const newLeftPosition = Math.min(rawPosition, maxLeftPosition);
-          setLeftMargin(newLeftPosition); //TODO: Make collaborative
+          setLeftMargin(newLeftPosition);
         } else if (isDraggingRight) {
-          const maxRightPosition = 816 - (leftMargin + 100);
-          const newRightPosition = Math.max(816 - rawPosition, 0);
+          const maxRightPosition = PAGE_WIDTH - (leftMargin + MINIMUM_SPACE);
+          const newRightPosition = Math.max(PAGE_WIDTH - rawPosition, 0);
           const constrainedRightPosition = Math.min(
             newRightPosition,
             maxRightPosition
