@@ -50,7 +50,6 @@ import {
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import TextAlign from "@tiptap/extension-text-align";
 
 const LineHeightButton = () => {
   const { editor } = useEditorStore();
